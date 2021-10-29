@@ -1,3 +1,4 @@
+import axios from 'axios'
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +18,30 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  const cardDiv = document.createElement('div');
+  const headlineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
+  const imgDiv = document.createElement('div');
+  const authorImg = document.createElement('img');
+  const authorSpan = document.createElement('span');
+
+  cardDiv.classList.add('card')
+  headlineDiv.classList.add('headline')
+  authorDiv.classList.add('author')
+  imgDiv.classList.add('img-container')
+
+  headlineDiv.textContent = article.headline
+  authorImg.src = article.authorPhoto
+  authorSpan.textContent = article.authorName
+
+  cardDiv.appendChild(headlineDiv)
+  cardDiv.appendChild(authorDiv)
+  authorDiv.appendChild(imgDiv)
+  imgDiv.appendChild(authorImg)
+  authorDiv.appendChild(authorSpan)
+
+  return cardDiv
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +53,22 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+//This gives you 4 of the same div, but this was the only way I could think of doing it within the amount of time. It works, but just not how it's supposed to according to the test.
+const cardFile = document.querySelector(selector)
+axios.get('http://localhost:5000/api/articles')
+.then(res => {
+const cardData = res.data.articles.javascript
+ cardLoop = cardData.map(item => {
+  const artCard = Card(item)
+  cardFile.appendChild(artCard)
+  console.log(cardFile)
+})
+})
+.catch(err => {
+  console.error('error');
+})
+return cardFile;
 }
 
 export { Card, cardAppender }
