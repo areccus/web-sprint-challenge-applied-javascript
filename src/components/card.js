@@ -54,21 +54,19 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 
-//This gives you 4 of the same div, but this was the only way I could think of doing it within the amount of time. It works, but just not how it's supposed to according to the test.
 const cardFile = document.querySelector(selector)
 axios.get('http://localhost:5000/api/articles')
 .then(res => {
 const cardData = res.data.articles.javascript
  cardLoop = cardData.map(item => {
   const artCard = Card(item)
-  cardFile.appendChild(artCard)
-  console.log(cardFile)
+  return cardFile.appendChild(artCard)
 })
 })
 .catch(err => {
   console.error('error');
 })
-return cardFile;
+console.log(cardFile);
 }
 
 export { Card, cardAppender }

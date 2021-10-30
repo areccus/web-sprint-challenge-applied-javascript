@@ -60,7 +60,12 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
+    -The best way to describe the dom is that it's what you see in your developer tools of a browser. It can be manipulated by Javascript and is essentially you accessing the HTML document through a language like Javascript.
 2. What is an event?
+    -An event in simple terms is when you set an action like click or mouseover and a response is given back like change color or an animation plays.
 3. What is an event listener?
+    -An eventListener is a link of sorts. It links an action with an outcome. It takes an event and a function.
 4. Why would we convert a NodeList into an Array?
+    - NodeList is not a real array that belongs to javascript. It belongs to the browser and you can not use certain elements with it. That is why we convert a NodeList into an array.
 5. What is a component?
+    -Components are reusable data that makes devs lives so much easier. Functions and such are components.
